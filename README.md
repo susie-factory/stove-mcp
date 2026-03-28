@@ -70,6 +70,24 @@ npm run dev
 
 成功响应体为 Stove 标准信封：`{ "code": 0, "data": ... }`，本服务器以 JSON 文本返回给 Agent。
 
+## 推送到 GitHub
+
+默认远程仓库：<https://github.com/susie-factory/stove-mcp>。
+
+本仓库包含脚本 `scripts/push-to-github.mjs`（基于 [isomorphic-git](https://isomorphic-git.org/)），**不依赖系统安装的 `git`**，可在本地初始化、提交并推送。
+
+1. 在 GitHub 创建 [Personal Access Token](https://github.com/settings/tokens)（需勾选仓库的 `contents` 写权限；对私有仓库使用 classic token 的 `repo` 或 fine-grained 的对应权限）。
+2. 在项目根目录执行：
+
+```bash
+export GITHUB_TOKEN=ghp_你的令牌
+node scripts/push-to-github.mjs
+```
+
+未设置 `GITHUB_TOKEN` 时，脚本会完成本地提交并提示如何推送。
+
+若本机已安装 Git，也可使用常规命令：`git remote add origin …`、`git push -u origin main`（需自行配置凭据或 SSH）。
+
 ## 许可
 
 MIT
